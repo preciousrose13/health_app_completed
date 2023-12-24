@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 import 'package:health/Resources/TextField/MyTextField.dart';
 import 'package:health/Resources/Utils/utils.dart';
+import 'package:health/Video_Call/joincall.dart';
 import 'package:health/View/User_Authentication/Login_page.dart';
 import 'package:health/View/User_Pages/Home_page/home_page.dart';
 
@@ -75,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       // User creation was successful, navigate to the home page or show a success message.
                       Utils().toastMessage("Account created successfully".tr);
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                          MaterialPageRoute(builder: (context) => JoinCall(userEmail: emailController.text)));
                     } on FirebaseAuthException catch (e) {
                       // Handle FirebaseAuthException
                       if (e.code == 'email-already-in-use') {

@@ -110,7 +110,7 @@ class _DesignationState extends State<Designation> {
                                   .then((value) {
                                 Utils()
                                     .toastMessage(value.user!.email.toString());
-                                Get.to(() => Service_Provider_Home());
+                                Get.to(() => Service_Provider_Home(userEmail: value.user!.email.toString()));
                               }).onError((error, stackTrace) {
                                 Utils().toastMessage(error.toString());
                               });

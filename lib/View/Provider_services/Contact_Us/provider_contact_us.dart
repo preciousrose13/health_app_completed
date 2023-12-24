@@ -36,7 +36,7 @@ class ProviderContact extends StatelessWidget {
                 onTap: () {
                   _fireStore
                       .doc(user!.email)
-                      .set({"email": user!.email, 'message': message.text});
+                      .set({"email": user.email, 'message': message.text});
                 }),
           )
         ],

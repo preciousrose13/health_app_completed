@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 import 'package:health/Resources/TextField/MyTextField.dart';
 import 'package:health/Resources/Utils/utils.dart';
+import 'package:health/Video_Call/joincall.dart';
 import 'package:health/View/User_Authentication/register_page.dart';
 import 'package:health/View/User_Pages/Home_page/home_page.dart';
 
@@ -71,11 +72,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         .signInWithEmailAndPassword(
                             email: emailController.text.toString(),
                             password: passwordController.text.toString())
-                        .then((value) {
+
+                    //     .then((value) {
+                    //   Utils().toastMessage(value.user!.email.toString());
+                    //   Navigator.push(context,
+                    //       MaterialPageRoute(builder: (context) => HomePage()));
+
+
+                    // })
+
+                    .then((value) {
                       Utils().toastMessage(value.user!.email.toString());
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    }).onError((error, stackTrace) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => JoinCall(userEmail: value.user!.email.toString()),
+                        ),
+                      );
+                    })
+                    
+                    .onError((error, stackTrace) {
                       Utils().toastMessage(error.toString());
                     });
                   }

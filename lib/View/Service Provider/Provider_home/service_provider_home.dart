@@ -2,15 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
 import 'package:health/Resources/Drawer/drawer.dart';
 import 'package:health/Resources/Services_gri/services_grid.dart';
+import 'package:health/Video_Call/call.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
 
 class Service_Provider_Home extends StatefulWidget {
+  final String userEmail;
+
   Service_Provider_Home({
     Key? key,
+    required this.userEmail,
   }) : super(key: key);
 
   @override
@@ -19,6 +22,7 @@ class Service_Provider_Home extends StatefulWidget {
 
 class _Service_Provider_HomeState extends State<Service_Provider_Home> {
   final _auth = FirebaseAuth.instance;
+
   final user_appointments =
       FirebaseFirestore.instance.collection("User_appointments").snapshots();
 
@@ -47,6 +51,17 @@ class _Service_Provider_HomeState extends State<Service_Provider_Home> {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MyCall(callID: "1", userEmail: widget.userEmail),
+                ),
+              );
+            },
+            child: Text('Join Call'),
+          ),
+
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

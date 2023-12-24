@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:health/Resources/Button/mybutton.dart';
-import 'package:health/View/Designation%20Registration/provider_login.dart';
+import 'package:health/View/Provider_Authentication/provider_login.dart';
 import 'package:health/View/User_Authentication/Login_page.dart';
 
 class Splash_Screen extends StatefulWidget {

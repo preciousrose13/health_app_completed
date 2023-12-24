@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 import 'package:health/Resources/TextField/MyTextField.dart';
 import 'package:health/Resources/Utils/utils.dart';
-import 'package:health/View/Designation%20Registration/designation.dart';
+import 'package:health/View/Provider_Authentication/provider_register.dart';
 import 'package:health/View/Service%20Provider/Provider_home/service_provider_home.dart';
 
 class Provider_login extends StatefulWidget {
@@ -71,13 +71,27 @@ class _Provider_loginState extends State<Provider_login> {
                         .signInWithEmailAndPassword(
                             email: emailController.text.toString(),
                             password: passwordController.text.toString())
+
+                    //     .then((value) {
+                    //   Utils().toastMessage(value.user!.email.toString());
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //           builder: (context) => Service_Provider_Home()));
+                    // })
+                    
+
                         .then((value) {
-                      Utils().toastMessage(value.user!.email.toString());
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Service_Provider_Home()));
-                    }).onError((error, stackTrace) {
+                          Utils().toastMessage(value.user!.email.toString());
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Service_Provider_Home(userEmail: value.user!.email.toString()),
+                            ),
+                          );
+                        })
+
+                    .onError((error, stackTrace) {
                       Utils().toastMessage(error.toString());
                     });
                   }
