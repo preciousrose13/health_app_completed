@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 
 class ProviderContact extends StatelessWidget {
@@ -16,6 +17,8 @@ class ProviderContact extends StatelessWidget {
     final user = _auth.currentUser;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: MyColors.purple,
+        centerTitle: true,
         title: Text("Contact Us".tr),
       ),
       body: Column(

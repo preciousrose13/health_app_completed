@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/View/User_Pages/Doctor_visit/doctor_visit.dart';
 import 'package:health/View/User_Pages/Laboratory/laboratory.dart';
@@ -9,6 +11,11 @@ import 'package:health/View/User_Pages/Vitamin_IV_drips_and_fluids/Vitamin_IV_dr
 import 'package:health/View/User_Pages/virtual_consultation/virtual_consultation.dart';
 
 class CarouselExample extends StatelessWidget {
+  final UserModel userModel;
+  final User firebaseUser;
+
+  const CarouselExample({super.key, required this.userModel, required this.firebaseUser});
+
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -48,7 +55,7 @@ class CarouselExample extends StatelessWidget {
           Colors.white,
           Icons.videocam_outlined,
           "Virtual consultation".tr,
-          () => Get.to(() => VirtualConsultation()),
+          () => Get.to(() => VirtualConsultation(userModel: userModel, firebaseUser: firebaseUser)),
         ),
         _buildCarouselItem(
           "229 SAR",

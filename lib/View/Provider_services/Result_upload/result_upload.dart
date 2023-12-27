@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 
 class ResultUpload extends StatefulWidget {
   const ResultUpload({super.key});
@@ -59,9 +60,12 @@ class _ResultUploadState extends State<ResultUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: MyColors.purple,
+          centerTitle: true,
           title: Text("Upload Result here".tr),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: MyColors.purple,
           onPressed: () {
             pickFile();
           },

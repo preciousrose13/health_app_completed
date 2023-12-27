@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:health/Resources/AppBar/app_bar.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/Resources/Search_bar/search_bar.dart';
 
 class AcceptedRequests extends StatefulWidget {
@@ -37,7 +37,13 @@ class _AcceptedRequestsState extends State<AcceptedRequests> {
         .snapshots();
 
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        backgroundColor: MyColors.purple,
+        centerTitle: true,
+        title: Text(
+          "Accepted Appointments".tr,
+        )
+      ),
       body: SafeArea(
         child: Column(
           children: [

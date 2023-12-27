@@ -1,20 +1,21 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
 import 'package:health/Resources/Drawer/drawer.dart';
 import 'package:health/Resources/Services_gri/services_grid.dart';
-import 'package:health/Video_Call/call.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
 
 class Service_Provider_Home extends StatefulWidget {
+  final UserModel userModel;
+  final User firebaseUser;
   final String userEmail;
 
   Service_Provider_Home({
-    Key? key,
-    required this.userEmail,
-  }) : super(key: key);
+    Key? key, required this.userModel, required this.firebaseUser, required this.userEmail,}) : super(key: key);
 
   @override
   State<Service_Provider_Home> createState() => _Service_Provider_HomeState();
@@ -47,20 +48,20 @@ class _Service_Provider_HomeState extends State<Service_Provider_Home> {
           _auth.signOut().then((value) {
             Get.to(() => Splash_Screen());
           });
-        },
+        }, userModel: widget.userModel, firebaseUser: widget.firebaseUser,
       ),
       body: ListView(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => MyCall(callID: "1", userEmail: widget.userEmail),
-                ),
-              );
-            },
-            child: Text('Join Call'),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) => MyCall(callID: "1", userEmail: widget.userEmail),
+          //       ),
+          //     );
+          //   },
+          //   child: Text('Join Call'),
+          // ),
 
           SizedBox(height: 20),
           Row(

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:health/Resources/AppBar/app_bar.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 
 class AboutUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  MyAppBar(),
+      appBar:  AppBar(
+        backgroundColor: MyColors.purple,
+        title: Text("About Us"),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -148,9 +152,9 @@ class AboutUsPage extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 25,
           fontWeight: FontWeight.bold,
-          color: Colors.blue,
+          color: MyColors.purple,
         ),
       ),
     );
@@ -162,7 +166,7 @@ class AboutUsPage extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 20,
         ),
       ),
     );

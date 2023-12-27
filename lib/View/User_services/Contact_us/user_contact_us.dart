@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/Resources/Button/mybutton.dart';
 
 class UserContact extends StatelessWidget {
@@ -15,6 +16,8 @@ class UserContact extends StatelessWidget {
     final user = _auth.currentUser;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: MyColors.purple,
+        centerTitle: true,
         title: Text("Contact Us".tr),
       ),
       body: Column(
@@ -35,7 +38,7 @@ class UserContact extends StatelessWidget {
                 onTap: () {
                   _fireStore
                       .doc(user!.email)
-                      .set({"email": user!.email, 'message': message.text});
+                      .set({"email": user.email, 'message': message.text});
                 }),
           )
         ],

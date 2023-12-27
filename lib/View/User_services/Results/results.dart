@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 
 class UserResult extends StatefulWidget {
   const UserResult({super.key});
@@ -59,7 +60,10 @@ class _UserResultState extends State<UserResult> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: true,
+          backgroundColor: MyColors.purple,
           title: Text("Your result".tr),
+          centerTitle: true,
         ),
         // floatingActionButton: FloatingActionButton(
         //   onPressed: () {

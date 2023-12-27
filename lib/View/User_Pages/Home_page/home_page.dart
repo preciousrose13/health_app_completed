@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
 import 'package:health/Resources/Crousal_slider/slider_user.dart';
 import 'package:health/Resources/Drawer/drawer.dart';
@@ -12,8 +12,12 @@ import 'package:health/View/Splash_Screen/splash_screen.dart';
 
 
 class HomePage extends StatefulWidget {
+  
+  final UserModel userModel;
+  final User firebaseUser;
+
   HomePage({
-    Key? key,
+    Key? key, required this.userModel, required this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -43,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           _auth.signOut().then((value) {
             Get.to(() => Splash_Screen());
           });
-        },
+        },userModel: widget.userModel, firebaseUser: widget.firebaseUser,
       ),
       body: ListView(
         children: [
@@ -64,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           MySearchBar(),
-          CarouselExample(),
+          CarouselExample(userModel: widget.userModel, firebaseUser: widget.firebaseUser,),
           SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.all(8.0),

@@ -1,13 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
+import 'package:health/Chat_App/Pages/Home.dart';
 
 import 'package:health/Resources/AppColors/app_colors.dart';
 
+// ignore: must_be_immutable
 class MyDrawer extends StatefulWidget {
+  final UserModel userModel;
+  final User firebaseUser;
+  
   void Function()? ontap;
   MyDrawer({
     Key? key,
-    this.ontap,
+    this.ontap, required this.userModel, required this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -34,6 +41,13 @@ class _MyDrawerState extends State<MyDrawer> {
                 ),
               ),
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.chat),
+            title: Text("Chats".tr),
+            onTap: () {
+              Get.to(() => Home(userModel: widget.userModel, firebaseUser: widget.firebaseUser));
+            },
           ),
           ListTile(
             leading: Icon(Icons.account_circle),
